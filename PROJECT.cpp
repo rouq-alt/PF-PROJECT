@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+struct items{
     int code;
     char name[20];
     char supplier[20];
@@ -11,11 +12,10 @@
 int menu() {
     int choice;
     printf("\n\n MAIN MENU \n");
-    puts(" Enter 1 for Inventory management");
-    puts(" Enter 2 for Events management");
-    puts(" Enter 3 for Employee Management");
-    puts(" Enter 4 for Delivery Management");
-    puts(" Enter 0 to exit program");
+    printf(" Enter 1 for Inventory management\n");
+    printf(" Enter 2 for Employee Management\n");
+    printf(" Enter 3 for Delivery Management\n");
+    printf(" Enter 0 to exit program\n");
     printf(" Enter choice: ");
     scanf("%d", &choice);
     return choice;
@@ -23,7 +23,7 @@ int menu() {
 
 
 void saveInventoryToFile(struct items item[], int count) {
-    FILE *file = fopen("inventory.txt", "w");
+    FILE *file = fopen("D:/Downloads/inventory.txt", "w");
     if (file == NULL) {
         printf("Error opening file for writing.\n");
         return;
@@ -39,7 +39,7 @@ void saveInventoryToFile(struct items item[], int count) {
 
 
 void loadInventoryFromFile(struct items item[], int *count) {
-    FILE *file = fopen("inventory.txt", "r");
+    FILE *file = fopen("D:/Downloads/inventory.txt", "r");
     if (file == NULL) {
         printf("File not found. Starting with default inventory.\n");
         *count = 0; 
@@ -297,12 +297,9 @@ int main() {
                 inventory();
                 break;
             case 2:
-                events();
-                break;
-            case 3:
                 employee();
                 break;
-             case 4:
+             case 3:
                 deliverySystem(); 
                 break;   
             case 0:
