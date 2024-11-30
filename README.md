@@ -1,2 +1,3 @@
 # PF-PROJECT
-Programming Fundamental Project
+Inventory Management System
+
