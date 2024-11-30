@@ -23,7 +23,7 @@ int menu() {
 
 
 void saveInventoryToFile(struct items item[], int count) {
-    FILE *file = fopen("D:/Downloads/inventory.txt", "w");
+    FILE *file = fopen("D:\\Downloads\\inventory.txt", "w");
     if (file == NULL) {
         printf("Error opening file for writing.\n");
         return;
@@ -39,7 +39,7 @@ void saveInventoryToFile(struct items item[], int count) {
 
 
 void loadInventoryFromFile(struct items item[], int *count) {
-    FILE *file = fopen("D:/Downloads/inventory.txt", "r");
+    FILE *file = fopen("D:\\Downloads\\inventory.txt", "r");
     if (file == NULL) {
         printf("File not found. Starting with default inventory.\n");
         *count = 0; 
@@ -173,11 +173,23 @@ void inventory() {
     }
 }
 
-void employee() {
-     char employee[25][100];
+void manageemployee() {
+    char employee[25][100];
     char department[25][10];
     int salary[25];
     int employeeCount = 0, choice;
+
+    FILE *file = fopen("D:\\Downloads\\employee.txt", "r"); // Open file in append mode
+    if (!file) {
+        printf("Error opening file!\n");
+        return;
+    }
+
+    // Load existing data from the file
+    while (fscanf(file, "%99[^,],%9[^,],%d\n", employee[employeeCount], department[employeeCount], &salary[employeeCount]) != EOF) {
+        employeeCount++;
+    }
+    fclose(file);
 
     while (1) {
         printf("\nEMPLOYEE MANAGEMENT\n");
@@ -205,6 +217,15 @@ void employee() {
                     scanf("%d", &salary[employeeCount]);
                     getchar();
 
+                    // Save the new employee to file
+                    file = fopen("D:\\Downloads\\employee.txt", "a");
+                    if (file) {
+                        fprintf(file, "%s,%s,%d\n", employee[employeeCount], department[employeeCount], salary[employeeCount]);
+                        fclose(file);
+                    } else {
+                        printf("Error opening file for writing!\n");
+                    }
+
                     employeeCount++;
                     printf("Employee added.\n");
                 } else {
@@ -224,6 +245,8 @@ void employee() {
         }
     }
 }
+
+
 void deliverySystem() {
     int choice;
 
@@ -238,7 +261,7 @@ void deliverySystem() {
         switch (choice) {
             case 1: {
                 // Request delivery
-                FILE *file = fopen("delivery(1).txt", "a");
+                FILE *file = fopen("D:\\Downloads\\delivery.txt", "a");
                 if (file == NULL) {
                     printf("Error: Unable to open delivery log file!\n");
                     break;
@@ -293,11 +316,11 @@ int main() {
     do {
         choice = menu();
         switch (choice) {
-            case 1:
+            case 1: 
                 inventory();
                 break;
             case 2:
-                employee();
+                manageemployee();
                 break;
              case 3:
                 deliverySystem(); 
