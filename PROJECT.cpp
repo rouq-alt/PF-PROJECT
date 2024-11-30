@@ -8,7 +8,6 @@
     int quantity;
 };
 
-// Function to display the main menu
 int menu() {
     int choice;
     printf("\n\n MAIN MENU \n");
@@ -170,34 +169,6 @@ void inventory() {
 
             default:
                 printf("\tInvalid entry. Please try again.\n");
-        }
-    }
-}
-
-
-void events() {
-    int g = -1;
-    puts("\nEVENT MANAGEMENT \n");
-    while (g != 0) {
-        puts("\n\tEVENT MANAGEMENT MENU\n");
-        puts("\tEnter 1 for male team schedule");
-        puts("\tEnter 2 for female team schedule");
-        puts("\tEnter 0 to exit event management");
-        printf("\tEnter choice: ");
-        scanf("%d", &g);
-
-        switch (g) {
-            case 1:
-                puts("[Male team schedule]");
-                break;
-            case 2:
-                puts("[Female team schedule]");
-                break;
-            case 0:
-                puts("Exiting event management...");
-                break;
-            default:
-                puts("Invalid choice");
         }
     }
 }
