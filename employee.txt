@@ -1,0 +1,6 @@
+John Doe,IT,50000
+Jane Smith,HR,60000
+Nimra Mehmood,CS,15000
+Shorouq Iqbal,DOC,40000
+Hafsa Asim,FE,700000
+ashar,hr,54333
