@@ -2,8 +2,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-// Define struct for inventory items
-struct items {
     int code;
     char name[20];
     char supplier[20];
@@ -24,7 +22,7 @@ int menu() {
     return choice;
 }
 
-// Function to save inventory to file
+
 void saveInventoryToFile(struct items item[], int count) {
     FILE *file = fopen("inventory.txt", "w");
     if (file == NULL) {
@@ -40,12 +38,12 @@ void saveInventoryToFile(struct items item[], int count) {
     printf("Inventory saved to file.\n");
 }
 
-// Function to load inventory from file
+
 void loadInventoryFromFile(struct items item[], int *count) {
     FILE *file = fopen("inventory.txt", "r");
     if (file == NULL) {
         printf("File not found. Starting with default inventory.\n");
-        *count = 0; // Initialize with no items
+        *count = 0; 
         return;
     }
 
@@ -66,7 +64,7 @@ void inventory() {
     char searchSup[20];
     struct items item[100];
 
-    // Load existing inventory from file
+
     loadInventoryFromFile(item, &currentItems);
 
     while (choice != 0) {
@@ -80,7 +78,7 @@ void inventory() {
         puts("\t0. Exit inventory");
         printf("\tEnter choice: ");
         scanf("%d", &choice);
-        getchar(); // Clear newline character from input buffer
+        getchar();
 
         int i;
         switch (choice) {
@@ -112,7 +110,7 @@ void inventory() {
             case 3:
                 printf("\tEnter supplier name: ");
                 fgets(searchSup, 20, stdin);
-                searchSup[strcspn(searchSup, "\n")] = 0;  // Remove newline
+                searchSup[strcspn(searchSup, "\n")] = 0; 
                 printf("\tItems supplied by %s:\n", searchSup);
 
                 for (i = 0; i < currentItems; i++) {
@@ -277,17 +275,17 @@ void deliverySystem() {
 
                 char item[50], company[50], address[100];
                 printf("\nEnter item name: ");
-                getchar(); // Consume newline left by previous scanf
+                getchar(); 
                 fgets(item, sizeof(item), stdin);
-                item[strcspn(item, "\n")] = 0; // Remove newline character
+                item[strcspn(item, "\n")] = 0; 
 
                 printf("Enter company name: ");
                 fgets(company, sizeof(company), stdin);
-                company[strcspn(company, "\n")] = 0; // Remove newline character
+                company[strcspn(company, "\n")] = 0; 
 
                 printf("Enter delivery address: ");
                 fgets(address, sizeof(address), stdin);
-                address[strcspn(address, "\n")] = 0; // Remove newline character
+                address[strcspn(address, "\n")] = 0; 
 
                 fprintf(file, "Item: %s\nCompany: %s\nAddress: %s\n\n", item, company, address);
                 fclose(file);
@@ -296,7 +294,6 @@ void deliverySystem() {
                 break;
             }
             case 2: {
-                // View delivery logs
                 FILE *file = fopen("D:/Downloads/delivery.txt", "r");
                 if (file == NULL) {
                     printf("No deliveries found yet!\n");
