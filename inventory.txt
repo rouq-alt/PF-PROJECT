@@ -1,0 +1,8 @@
+2001, "lipstick", "Maybelline",15
+2002, "foundation", "L'Oreal",20
+2003, "eyeliner", "Revlon",25
+2004, "mascara", "MAC",10
+2005, "blush", "NARS",30
+2006, "palette", "Huda Beauty",5
+1007,piiggybank,nimra,3
+2009,lip oil,shorouq,89
