@@ -1,0 +1,9 @@
+2001,lipstick,Maybelline,15
+2002,foundation,Loreal,20
+2003,eyeliner", "Revlon",25
+2004,mascara,MAC,10
+2005,blush,NARS,30
+2006,palette,Huda Beauty,5
+2007,facemask,nimra,11
+2008,lipliner,hafsa,22
+2009,eyelashes,Shouroq beauty,99
