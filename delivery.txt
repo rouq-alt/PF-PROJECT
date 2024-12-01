@@ -1,0 +1,15 @@
+Item: Lipstick
+Company: L'Oréal
+Address: 123 Main Street, Cityville
+
+Item: Foundation
+Company: Maybelline
+Address: 456 Elm Street, TownsvillS
+ 
+Item:Mascara
+Company:Mac
+Address:Alfalah A-20
+Item: Blush
+Company: NARS
+Address: Johar town
+
