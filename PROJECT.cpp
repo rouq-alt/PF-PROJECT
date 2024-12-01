@@ -34,7 +34,7 @@ void saveInventoryToFile(struct items item[], int count) {
     }
 
     fclose(file);
-    printf("Inventory saved to file.\n");
+    printf("Inventory updated to file.\n");
 }
 
 
@@ -59,6 +59,8 @@ void loadInventoryFromFile(struct items item[], int *count) {
 // Inventory management functionality
 void inventory() {
     puts("\nINVENTORY MANAGEMENT\n");
+    char id[10];
+    char password[10];
     int choice = 1, qty = 0, currentItems = 0, searchCode;
     char searchSup[20];
     struct items item[100];
@@ -135,6 +137,13 @@ void inventory() {
                 break;
 
             case 5:
+            	 puts("\tAdministrator access required, please enter credentials \n");
+            printf("\tEnter user ID: ");
+            scanf("%s", id);
+            printf("\tEnter password: ");
+            scanf("%s", password);
+
+            if (strcmp(id, "HSN") == 0 && strcmp(password, "990") == 0) {
                 printf("\tEnter item code: ");
                 scanf("%d", &item[currentItems].code);
                 getchar();
@@ -151,10 +160,23 @@ void inventory() {
                 scanf("%d", &item[currentItems].quantity);
 
                 currentItems++;
+                
+                saveInventoryToFile(item, currentItems);
                 printf("\tItem added successfully!\n");
+            }
+            else{
+            	printf("Wrong credentials!");
+			}
                 break;
 
             case 6:
+            	   puts("\tAdministrator access required, please enter credentials \n");
+            printf("\tEnter user ID: ");
+            scanf("%s", id);
+            printf("\tEnter password: ");
+            scanf("%s", password);
+
+            if (strcmp(id, "HSN") == 0 && strcmp(password, "990") == 0) {
                 printf("\tEnter item code to update stock: ");
                 scanf("%d", &searchCode);
                 for (i = 0; i < currentItems; i++) {
@@ -165,14 +187,16 @@ void inventory() {
                         printf("\tStock updated. New quantity: %d\n", item[i].quantity);
                     }
                 }
+            }else{
+            	printf("Wrong credentials!");
+			}
                 break;
 
             default:
                 printf("\tInvalid entry. Please try again.\n");
-        }
-    }
+        
 }
-
+}
 void manageemployee() {
     char employee[25][100];
     char department[25][10];
@@ -311,10 +335,11 @@ void deliverySystem() {
         }
     } while (choice != 0);
 }
-int main() {
+int main(){
     int choice;
     do {
         choice = menu();
+        
         switch (choice) {
             case 1: 
                 inventory();
@@ -331,7 +356,7 @@ int main() {
             default:
                 printf("Invalid choice! Try again.\n");
         }
-    } while (choice != 0);
+	} while (choice != 0);
+	
     return 0;
 }
- 
